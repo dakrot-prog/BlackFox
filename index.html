@@ -3,25 +3,74 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BLACKFOX - професійна перевірка на поліграфі</title>
+    <title>BLACKFOX — професійна перевірка на поліграфі в Україні</title>
+    <meta name="description" content="Професійні дослідження з використанням поліграфа для бізнесу, приватних осіб і юридичної сфери. Конфіденційно, об'єктивно та безпечно." />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="author" content="BLACKFOX" />
+    <meta name="theme-color" content="#1b1b1b" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="uk_UA" />
+    <meta property="og:site_name" content="BLACKFOX" />
+    <meta property="og:title" content="BLACKFOX — професійна перевірка на поліграфі" />
+    <meta property="og:description" content="Поліграфні дослідження для бізнесу, приватних осіб і юридичної сфери з повним дотриманням конфіденційності." />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="BLACKFOX — професійна перевірка на поліграфі" />
+    <meta name="twitter:description" content="Професійні та конфіденційні дослідження з використанням поліграфа в Україні." />
+
+    <link rel="icon" type="image/png" href="assets/BF_small_logo.png" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "BLACKFOX",
+        "description": "Професійні дослідження з використанням поліграфа для бізнесу, приватних осіб і юридичної сфери.",
+        "telephone": "+380970163838",
+        "email": "dakrot@gmail.com",
+        "areaServed": {
+          "@type": "Country",
+          "name": "Україна"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer service",
+          "telephone": "+380970163838",
+          "email": "dakrot@gmail.com",
+          "availableLanguage": ["uk", "ru"]
+        }
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@200;300;400;500;600;700;800;900&family=Geist+Mono:wght@300;400;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="is-loading">
+    <div id="page-loader" class="page-loader" role="status" aria-live="polite" aria-label="Завантаження сторінки">
+      <img src="assets/BF_small_logo.png" alt="" aria-hidden="true" />
+      <span class="page-loader-bar" aria-hidden="true"></span>
+      <span class="page-loader-text">Завантаження...</span>
+    </div>
+
     <header class="site-header">
+      <button class="menu-toggle" type="button" aria-label="Відкрити меню" aria-expanded="false" aria-controls="header-navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <a class="brand" href="#top" aria-label="BLACKFOX">
         <img src="assets/BF_small_logo.png" alt="BLACKFOX" />
       </a>
-      <nav class="desktop-nav" aria-label="Основна навігація">
+      <nav id="header-navigation" class="desktop-nav" aria-label="Основна навігація">
         <a href="#expert">Експерт</a>
         <a href="#services">Послуги</a>
         <a href="#process">Процес</a>
         <a href="#benefits">Переваги</a>
         <a href="#contacts">Контакти</a>
       </nav>
-      <a class="phone" href="tel:+380650000000">
+      <a class="phone" href="tel:+380970163838">
         <img src="assets/Phone.svg" alt="" aria-hidden="true" />
         <span>+38 097 016 38 38</span>
       </a>
@@ -39,7 +88,9 @@
           </ul>
         </div>
         <div class="hero-visual asset-frame">
-          <img src="assets/hero-polygraph.png" alt="BLACKFOX поліграф" />
+          <video autoplay muted playsinline aria-label="BLACKFOX">
+            <source src="assets/logo.mp4" type="video/mp4" />
+          </video>
         </div>
         <div class="hero-actions">
           <a class="btn primary" href="#contacts">Записатися на консультацію</a>
@@ -78,7 +129,7 @@
           </div>
           <div class="expert-content">
             <p class="eyebrow">Експертиза, підтверджена досвідом</p>
-            <h2>30 років практичного досвіду, психологія поведінки та точне зчитування людини</h2>
+            <h2>30 років практичного досвіду, психології поведінки та точного зчитування людини</h2>
             <p>
               Фахівець BLACKFOX має понад 30 років професійного досвіду у сфері безпеки,
               психології поведінки та проведенні спеціальних перевірок. Практичний досвід
@@ -101,6 +152,8 @@
 
       <section id="services" class="services section">
         <p class="section-code">[02] Послуги</p>
+        <p class="eyebrow">Чим ми можемо допомогти</p>
+        <h2 class="services-intro">Професійні дослідження з поліграфом</h2>
         <div class="service-stack" aria-label="Послуги BLACKFOX">
           <article class="service-card">
             <div class="service-art service-business-art"><img src="assets/service-business.png" alt="" /></div>
@@ -136,7 +189,7 @@
               <h3>Для юридичної сфери</h3>
               <p>Дослідження як додатковий інструмент для аналізу фактів, перевірки свідчень та підготовки правової позиції.</p>
               <ul>
-                <li>Перевірки на факт адвокатів</li>
+                <li>Перевірки на запит адвокатів</li>
                 <li>Незалежні експертні дослідження</li>
               </ul>
             </div>
@@ -175,32 +228,50 @@
       <section id="benefits" class="benefits section">
         <p class="section-code">[04] Переваги</p>
         <div class="benefit-grid">
-          <article><span>01</span><strong>Конфіденційність</strong></article>
-          <article><span>02</span><strong>Точність</strong></article>
-          <article><span>03</span><strong>Досвід експерта</strong></article>
-          <article><span>04</span><strong>Сучасні методики</strong></article>
-          <article><span>05</span><strong>Індивідуальний підхід</strong></article>
-          <article><span>06</span><strong>Професійна етика</strong></article>
+          <article class="benefit-placeholder">
+            <img src="assets/confidence.png" alt="Конфіденційність" />
+          </article>
+          <article class="benefit-placeholder">
+            <img src="assets/objection.png" alt="Точність" />
+          </article>
+          <article class="benefit-placeholder">
+            <img src="assets/skill.png" alt="Досвід експерта" />
+          </article>
+          <article class="benefit-placeholder">
+            <img src="assets/methods.png" alt="Сучасні методики" />
+          </article>
+          <article class="benefit-placeholder">
+            <img src="assets/individual.png" alt="Індивідуальний підхід" />
+          </article>
+          <article class="benefit-placeholder">
+            <img src="assets/prof_et.png" alt="Професійна етика" />
+          </article>
         </div>
         <div>
           <p class="eyebrow">Чому клієнти обирають BLACKFOX</p>
           <h2>Переваги, які формують довіру</h2>
-          <p>Поєднання поліграфних досліджень, потреб клієнта та практичного досвіду дозволяє працювати з бізнесом, приватними зверненнями й юридичними задачами максимально коректно.</p>
+          <p>Проведення досліджень з використанням поліграфа потребує високого рівня професійної підготовки, практичного досвіду та бездоганної репутації. Ми дотримуємося принципів законності, професійної етики та повної конфіденційності, забезпечуючи об'єктивність кожного дослідження незалежно від складності поставлених завдань.</p>
         </div>
       </section>
 
       <section id="contacts" class="contact section">
+        <p class="section-code contact-code">[05] Контакти</p>
         <div>
           <p class="eyebrow">Зв'яжіться з нами</p>
-          <h2>Запишіться на консультацію з BLACKFOX</h2>
-          <p>Готові відповісти на ваші запитання, допомогти оцінити ситуацію та підібрати оптимальний формат поліграфного дослідження.</p>
-          <a class="btn primary" href="tel:+380650000000">+38 065 000 00 00</a>
+          <h2>Запишіться на консультацію в BLACKFOX</h2>
+          <p>Готові відповісти на ваші запитання, допомогти оцінити ситуацію та підібрати оптимальний формат дослідження з використанням поліграфа. Кожне звернення розглядається індивідуально та з повним дотриманням конфіденційності.</p>
+          <a class="btn primary" href="tel:+380970163838">+38 097 016 38 38</a>
         </div>
-        <form>
-          <label>Ім'я *<input type="text" name="name" required /></label>
-          <label>Телефон *<input type="tel" name="phone" placeholder="+38 (0XX) XXX XX XX" required /></label>
-          <label>Email<input type="email" name="email" placeholder="info@blackfox.ua" /></label>
-          <label>Тема<textarea name="message" rows="3" placeholder="Короткий опис ситуації"></textarea></label>
+        <form action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="d746334e-555c-41ff-b370-3daff86dd2ad" />
+          <input type="hidden" name="subject" value="Нова заявка з сайту BLACKFOX" />
+          <input type="hidden" name="from_name" value="BLACKFOX" />
+          <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" hidden />
+          <label><span>Ім'я*</span><input type="text" name="name" placeholder="Ваше ім'я" required /></label>
+          <label><span>Телефон*</span><input type="tel" name="phone" placeholder="+38 (0XX) XXX XX XX" autocomplete="tel" maxlength="19" pattern="^\+38 \(\d{3}\) \d{3} \d{2} \d{2}$" title="Введіть номер у форматі +38 (0XX) XXX XX XX" required /></label>
+          <label><span>Email</span><input type="email" name="email" placeholder="dakrot@gmail.com" /></label>
+          <label><span>Тема</span><textarea name="message" rows="3" placeholder="Короткий опис ситуації"></textarea></label>
+          <p class="form-note">Ми гарантуємо конфіденційність кожного звернення.</p>
           <button class="btn ghost" type="submit">Відправити</button>
         </form>
       </section>
@@ -208,18 +279,28 @@
 
     <footer class="site-footer">
       <div class="footer-brand">
-        <img class="footer-logo" src="assets/BF_small_logo.png" alt="BLACKFOX" />
-        <p>Професійна перевірка на поліграфі</p>
+        <img class="footer-logo" src="assets/footer.png" alt="BLACKFOX" />
+        <p>ПРОФЕСІЙНА ПЕРЕВІРКА НА ПОЛІГРАФІ</p>
       </div>
-      <nav aria-label="Навігація у футері">
+      <nav class="footer-column" aria-label="Навігація у футері">
+        <h2>Меню</h2>
         <a href="#expert">Експерт</a>
         <a href="#services">Послуги</a>
         <a href="#process">Процес</a>
+        <a href="#benefits">Переваги</a>
         <a href="#contacts">Контакти</a>
       </nav>
-      <address>
-        <a href="tel:+380650000000">+38 065 000 00 00</a>
-        <a href="mailto:info@blackfox.ua">info@blackfox.ua</a>
+      <nav class="footer-column" aria-label="Послуги у футері">
+        <h2>Послуги</h2>
+        <a href="#services">Перевірка для бізнесу</a>
+        <a href="#services">Перевірка для приватних осіб</a>
+        <a href="#services">Перевірка для юридичної сфери</a>
+        <a href="#services">Консультація поліграфолога</a>
+      </nav>
+      <address class="footer-column">
+        <h2>Контакти</h2>
+        <a href="tel:+380970163838">+38 (097) 016 38 38</a>
+        <a href="mailto:dakrot@gmail.com">dakrot@gmail.com</a>
       </address>
     </footer>
 
