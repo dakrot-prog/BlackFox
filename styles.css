@@ -149,12 +149,20 @@ video {
 .site-header::after {
   content: "";
   position: absolute;
+  z-index: 0;
   left: 0;
   right: 0;
   top: calc(50% + var(--header-line-offset));
   height: 1px;
   background: var(--orange);
   pointer-events: none;
+}
+
+.brand {
+  position: relative;
+  z-index: 1;
+  display: block;
+  background: var(--bg);
 }
 
 .menu-toggle {
@@ -1019,6 +1027,21 @@ form textarea::placeholder {
   letter-spacing: 0;
 }
 
+form input:-webkit-autofill,
+form input:-webkit-autofill:hover,
+form input:-webkit-autofill:focus,
+form input:-webkit-autofill:active {
+  -webkit-text-fill-color: #ffffff;
+  caret-color: #ffffff;
+  box-shadow: 0 0 0 1000px #2c2c2c inset;
+  transition: background-color 9999s ease-out 0s;
+}
+
+form input:autofill {
+  color: #ffffff;
+  caret-color: #ffffff;
+}
+
 form textarea {
   min-height: 72px;
 }
@@ -1357,7 +1380,7 @@ address.footer-column a {
     position: relative;
     top: auto;
     z-index: auto;
-    flex: 0 0 100%;
+    flex: 0 0 calc(100% - 42px);
     grid-template-columns: 1fr;
     gap: 24px;
     min-height: 0;
@@ -1629,6 +1652,7 @@ address.footer-column a {
   }
 
   .service-card {
+    flex-basis: calc(100% - 42px);
     gap: 18px;
     padding: 12px;
     border-radius: 14px;
