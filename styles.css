@@ -1655,7 +1655,7 @@ address.footer-column a {
     flex-basis: calc(100% - 42px);
     gap: 18px;
     padding: 12px;
-    border-radius: 14px;
+    border-radius: 20px;
   }
 
   .service-art {
