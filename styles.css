@@ -136,11 +136,10 @@ video {
 .site-header {
   position: relative;
   z-index: 20;
-  --header-line-offset: 28px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 96px;
+  height: 70px;
   padding: 0 clamp(20px, 5vw, 75px);
   background: rgba(27, 27, 27, 0.86);
   backdrop-filter: blur(16px);
@@ -152,10 +151,11 @@ video {
   z-index: 0;
   left: 0;
   right: 0;
-  top: calc(50% + var(--header-line-offset) - 31px);
+  bottom: 0;
   width: 100%;
   height: clamp(28px, 4.55vw, 65px);
   background: url("assets/FB_line_logo_small.png") left top / 100% 100% no-repeat;
+  transform: translateY(11px);
   pointer-events: none;
 }
 
@@ -256,8 +256,8 @@ video {
   grid-template-columns: 1.03fr 1.2fr;
   align-items: center;
   column-gap: clamp(30px, 6vw, 90px);
-  row-gap: 82px;
-  padding: 20px 80px 150px 80px;
+  row-gap: 92px;
+  padding: 60px 80px 150px 80px;
 }
 
 .hero h1 {
@@ -268,6 +268,13 @@ video {
   line-height: 1;
   letter-spacing: 0.05em;
   white-space: nowrap;
+}
+
+.hero h1 .black-word,
+.hero h1 .fox-word {
+  display: inline-block;
+  line-height: 1;
+  text-box: trim-both cap alphabetic;
 }
 
 .hero h1 .black-word {
@@ -298,7 +305,7 @@ video {
   display: grid;
   gap: 25px;
   padding: 0;
-  margin: 0 0 0 27px;
+  margin: 0 0 0 24px;
   list-style: none;
   color: var(--text);
   font-size: 20px;
@@ -340,17 +347,73 @@ video {
   font-size: 20px;
   font-weight: 600;
   cursor: pointer;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    background-color 180ms ease,
+    background-position 260ms ease;
 }
 
 .btn.primary {
   color: #111;
   background: linear-gradient(90deg, var(--orange), var(--orange-hot));
+  background-size: 200% 100%;
+}
+
+@media (min-width: 941px) {
+  .btn.primary {
+    width: 300px;
+  }
 }
 
 .btn.ghost {
   color: var(--text);
   background: #282828;
   border-color: #383838;
+}
+
+@media (hover: hover) {
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .btn.primary:hover {
+    background-position: 100% 0;
+    box-shadow: 0 0 14px rgba(254, 165, 2, 0.22);
+  }
+
+  .btn.ghost:hover {
+    color: var(--white);
+    border-color: rgba(255, 255, 255, 0.65);
+    background-color: #303030;
+    box-shadow: 0 0 14px rgba(255, 255, 255, 0.14);
+  }
+}
+
+.btn:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
+
+.btn.ghost:focus-visible {
+  outline-color: var(--white);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+
+  .btn:hover,
+  .btn:active {
+    transform: none;
+  }
 }
 
 .asset-frame {
@@ -385,8 +448,8 @@ video {
 
 .hero-visual {
   position: absolute;
-  right: 80px;
-  top: 25px;
+  right: 40px;
+  top: 70px;
   transform: none;
   width: 681px;
   max-width: 100%;
@@ -435,6 +498,29 @@ video {
   height: 302px;
   padding: 32px;
   border-radius: 25px;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+@media (hover: hover) {
+  .stats article:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.65);
+    background-color: #303030;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stats article {
+    transition: none;
+  }
+
+  .stats article:hover {
+    transform: none;
+  }
 }
 
 .stats strong {
@@ -504,6 +590,10 @@ video {
   align-items: center;
 }
 
+.expert-content {
+  align-self: start;
+}
+
 .expert h2,
 .services h2,
 .process h2,
@@ -570,7 +660,7 @@ video {
 }
 
 .competencies {
-  margin-top: 100px;
+  margin-top: 150px;
 }
 
 .competencies ol,
@@ -632,7 +722,7 @@ video {
 .services h2.services-intro {
   width: 900px;
   max-width: 100%;
-  margin: 20px 0 70px;
+  margin: 10px 0 70px;
   color: var(--white);
   font-family: "Geist", Arial, sans-serif;
   font-size: 40px;
@@ -768,7 +858,7 @@ video {
 
 .process .section-code {
   grid-column: 1 / -1;
-  margin-bottom: 42px;
+  margin-bottom: 0px;
 }
 
 .process > div:first-of-type {
@@ -844,14 +934,18 @@ video {
 .benefits {
   width: 100%;
   margin: 0;
-  padding: 150px 80px 106px 80px;
+  padding: 150px 80px 150px 80px;
   grid-template-columns: 1fr 1fr;
-  row-gap: 50px;
+  row-gap: 30px;
 }
 
 .benefits .section-code {
   grid-column: 1 / -1;
   margin-bottom: 0;
+}
+
+.benefits > div:not(.benefit-grid) {
+  align-self: start;
 }
 
 .benefit-grid {
@@ -934,15 +1028,19 @@ video {
   width: 100%;
   margin: 0;
   align-items: stretch;
-  padding: 106px 82px 92px 104px;
+  padding: 0px 82px 92px 104px;
   border: 0;
   background: transparent;
 }
 
 .contact::before {
   content: "";
-  position: absolute;
-  inset: 82px 80px 68px 80px;
+  position: relative;
+  grid-column: 1 / -1;
+  grid-row: 2;
+  min-width: 0;
+  min-height: 0;
+  margin: -24px -2px -24px -24px;
   z-index: 0;
   border: 1px solid #373737;
   border-radius: 14px;
@@ -956,10 +1054,20 @@ video {
 }
 
 .contact-code {
-  position: absolute;
-  left: 80px;
-  top: 8px;
-  margin: 0;
+  grid-column: 1 / -1;
+  grid-row: 1;
+  margin-left: -24px;
+  margin-bottom: 30px;
+}
+
+.contact > div {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.contact > form {
+  grid-column: 2;
+  grid-row: 2;
 }
 
 .contact p:not(.eyebrow):not(.section-code) {
@@ -975,6 +1083,8 @@ form {
 form label {
   display: grid;
   gap: 8px;
+  width: 604px;
+  max-width: 100%;
   padding: 14px 18px 16px;
   border: 1px solid #414141;
   border-radius: 12px;
@@ -982,6 +1092,40 @@ form label {
   background: #2c2c2c;
   font-size: 12px;
   font-weight: 700;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+@media (hover: hover) {
+  form label:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.65);
+    background-color: #303030;
+  }
+}
+
+form label:focus-within {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.65);
+  background-color: #303030;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  form label {
+    transition: none;
+  }
+
+  form label:hover,
+  form label:focus-within {
+    transform: none;
+  }
+}
+
+form .btn {
+  width: 604px;
+  max-width: 100%;
 }
 
 form label span {
@@ -1094,10 +1238,6 @@ form textarea {
   text-transform: uppercase;
 }
 
-.footer-column a {
-  color: inherit;
-}
-
 .footer-brand {
   width: 320px;
 }
@@ -1140,8 +1280,6 @@ address.footer-column a {
 
 @media (max-width: 940px) {
   .site-header {
-    --header-line-offset: 27px;
-    min-height: 72px;
     padding: 0 28px;
   }
 
@@ -1443,6 +1581,7 @@ address.footer-column a {
   .benefits {
     display: grid;
     gap: 36px;
+    row-gap: 30px;
     padding-bottom: 72px;
   }
 
@@ -1476,13 +1615,28 @@ address.footer-column a {
     padding: 142px 52px 72px;
   }
 
-  .contact-code {
-    left: 28px;
-    top: 72px;
+  .contact::before {
+    grid-row: 2 / 4;
+    margin: -14px -24px -32px;
   }
 
-  .contact::before {
-    inset: 120px 28px 40px;
+  .contact > form {
+    grid-column: 1;
+    grid-row: 3;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .contact form label,
+  .contact form .btn {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .contact form input,
+  .contact form textarea {
+    min-width: 0;
   }
 
   form input,
@@ -1526,8 +1680,6 @@ address.footer-column a {
 
 @media (max-width: 620px) {
   .site-header {
-    --header-line-offset: 26px;
-    min-height: 60px;
     padding: 0 16px;
   }
 
@@ -1546,6 +1698,12 @@ address.footer-column a {
     padding: 28px 16px 42px;
   }
 
+  .hero-copy {
+    width: 100%;
+    justify-self: center;
+    text-align: center;
+  }
+
   .hero h1 {
     font-size: clamp(38px, 10.5vw, 52px);
   }
@@ -1558,6 +1716,7 @@ address.footer-column a {
 
   .hero-points {
     gap: 9px;
+    justify-items: center;
     font-size: 14px;
   }
 
@@ -1695,6 +1854,7 @@ address.footer-column a {
 
   .benefits {
     gap: 26px;
+    row-gap: 30px;
     padding-bottom: 56px;
   }
 
@@ -1717,17 +1877,16 @@ address.footer-column a {
     max-width: 100%;
   }
 
-  .contact-code {
-    left: 16px;
-    top: 56px;
-  }
-
   .contact::before {
-    inset: 96px 8px 32px;
+    margin: -4px -20px -24px;
     border-radius: 18px;
   }
 
-  form label {
+  .contact-code {
+    margin-left: -20px;
+  }
+
+  .contact form label {
     padding: 10px 12px 12px;
   }
 
