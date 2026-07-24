@@ -276,7 +276,6 @@ video {
 .hero h1 .black-word,
 .hero h1 .fox-word {
   line-height: 1;
-  text-box: trim-both cap alphabetic;
 }
 
 .hero h1 .black-word {
@@ -369,6 +368,11 @@ video {
 }
 
 @media (min-width: 941px) {
+  .hero h1 .black-word,
+  .hero h1 .fox-word {
+    text-box: trim-both cap alphabetic;
+  }
+
   .contact .btn.primary {
     width: 300px;
   }
