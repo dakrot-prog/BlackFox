@@ -17,10 +17,12 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 90px;
 }
 
 body {
   margin: 0;
+  overflow-x: clip;
   font-family: "Geist", Arial, sans-serif;
   color: var(--text);
   background: var(--bg);
@@ -134,8 +136,9 @@ video {
 }
 
 .site-header {
-  position: relative;
-  z-index: 20;
+  position: sticky;
+  top: 0;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -272,7 +275,6 @@ video {
 
 .hero h1 .black-word,
 .hero h1 .fox-word {
-  display: inline-block;
   line-height: 1;
   text-box: trim-both cap alphabetic;
 }
@@ -299,6 +301,10 @@ video {
   line-height: 1.2;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+
+.mobile-break {
+  display: none;
 }
 
 .hero-points {
@@ -363,7 +369,7 @@ video {
 }
 
 @media (min-width: 941px) {
-  .btn.primary {
+  .contact .btn.primary {
     width: 300px;
   }
 }
@@ -479,7 +485,7 @@ video {
 
 .stats {
   width: 100%;
-  padding: 0px 80px 0px 80px;
+  padding: 0px 80px 150px 80px;
   display: grid;
   grid-template-columns: repeat(4, 302px);
   gap: 24px;
@@ -568,7 +574,7 @@ video {
 }
 
 .expert {
-  padding: 150px 80px 0px 80px;
+  padding: 0px 80px 150px 80px;
   width:100%;
 }
 
@@ -711,7 +717,7 @@ video {
 .services {
   width: 100%;
   margin: 0;
-  padding: 150px 80px 0px 80px;
+  padding: 0px 80px 150px 80px;
   overflow: visible;
 }
 
@@ -851,7 +857,7 @@ video {
 .process {
   width: 100%;
   margin: 0;
-  padding: 150px 80px 0px 80px;
+  padding: 0px 80px 150px 80px;
   grid-template-columns: 1fr;
   align-items: start;
 }
@@ -873,9 +879,9 @@ video {
   grid-column: 1 / -1;
   grid-row: 2;
   justify-self: end;
-  margin-right: -80px;
-  width: 1019px;
-  max-width: 100%;
+  margin-right: calc(-80px - max(0px, calc((100vw - var(--page-width)) / 2)));
+  width: calc(1019px + max(0px, calc((100vw - var(--page-width)) / 2)));
+  max-width: calc(100% + max(0px, calc((100vw - var(--page-width)) / 2)));
   height: 646px;
   min-height: 510px;
   border: 0;
@@ -934,7 +940,7 @@ video {
 .benefits {
   width: 100%;
   margin: 0;
-  padding: 150px 80px 150px 80px;
+  padding: 0px 80px 150px 80px;
   grid-template-columns: 1fr 1fr;
   row-gap: 30px;
 }
@@ -1028,7 +1034,7 @@ video {
   width: 100%;
   margin: 0;
   align-items: stretch;
-  padding: 0px 82px 92px 104px;
+  padding: 0px 82px 174px 104px;
   border: 0;
   background: transparent;
 }
@@ -1200,7 +1206,6 @@ form textarea {
   gap: clamp(34px, 5vw, 86px);
   justify-content: space-between;
   align-items: start;
-  margin-top: 80px;
   padding: 0 88px 74px;
   background: #222222;
 }
@@ -1278,16 +1283,61 @@ address.footer-column a {
   outline: 1px solid rgba(254, 165, 2, 0.12);
 } */
 
+@media (min-width: 941px) and (max-width: 1439px) {
+  body {
+    width: var(--page-width);
+    zoom: calc(100vw / var(--page-width));
+  }
+
+  .site-header::after {
+    height: 65px;
+  }
+}
+
 @media (max-width: 940px) {
+  .hero-copy {
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero h1,
+  .lead {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .hero-points {
+    width: fit-content;
+    max-width: 100%;
+    justify-items: start;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: left;
+  }
+
+  .mobile-break {
+    display: block;
+  }
+
+  .section-code {
+    display: none;
+  }
+
   .site-header {
     padding: 0 28px;
   }
 
+  .site-header::after {
+    height: min(65px, 16.67vw);
+    background: url("assets/BF_small_logo_mobile.svg") center top / min(390px, 100%) 100% no-repeat;
+    transform: translateY(11px);
+  }
+
   .menu-toggle {
     display: grid;
-    gap: 4px;
-    width: 32px;
-    padding: 6px 4px;
+    gap: 6px;
+    width: 48px;
+    padding: 9px 7.5px;
     border: 0;
     color: var(--orange);
     background: transparent;
@@ -1295,8 +1345,8 @@ address.footer-column a {
 
   .menu-toggle span {
     display: block;
-    width: 22px;
-    height: 2px;
+    width: 33px;
+    height: 3px;
     background: currentColor;
   }
 
@@ -1331,7 +1381,7 @@ address.footer-column a {
   }
 
   .site-header.is-menu-open .menu-toggle span:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
+    transform: translateY(9px) rotate(45deg);
   }
 
   .site-header.is-menu-open .menu-toggle span:nth-child(2) {
@@ -1339,7 +1389,7 @@ address.footer-column a {
   }
 
   .site-header.is-menu-open .menu-toggle span:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
+    transform: translateY(-9px) rotate(-45deg);
   }
 
   .phone span {
@@ -1348,8 +1398,8 @@ address.footer-column a {
 
   .phone,
   .phone img {
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
   }
 
   .section {
@@ -1361,7 +1411,7 @@ address.footer-column a {
     display: grid;
     grid-template-columns: 1fr;
     gap: 34px;
-    padding: 42px 28px 64px;
+    padding: 42px 28px 100px;
   }
 
   .hero-copy {
@@ -1388,18 +1438,17 @@ address.footer-column a {
 
   .hero h1 {
     width: 100%;
-    font-size: clamp(54px, 11vw, 84px);
+    font-size: clamp(54px, 14vw, 120px);
   }
 
   .lead {
     width: min(590px, 100%);
-    margin: 8px 0 30px;
+    margin: 8px auto 30px;
     font-size: clamp(22px, 4vw, 34px);
   }
 
   .hero-points {
     gap: 14px;
-    margin-left: 0;
     font-size: 18px;
   }
 
@@ -1412,14 +1461,14 @@ address.footer-column a {
     min-height: 48px;
     height: auto;
     padding: 12px 18px;
-    font-size: 15px;
+    font-size: 18px;
     text-align: center;
   }
 
   .stats {
     width: 100%;
     margin: 0;
-    padding: 0 28px 72px;
+    padding: 0 28px 100px;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 16px;
   }
@@ -1438,6 +1487,11 @@ address.footer-column a {
     width: 100%;
   }
 
+    .stats span,
+  .stats p {
+    font-size: 32px;
+  }
+
   .stats strong {
     margin-bottom: 10px;
   }
@@ -1447,7 +1501,7 @@ address.footer-column a {
   .process,
   .benefits {
     width: 100%;
-    padding: 72px 28px 0;
+    padding: 0px 28px 100px;
   }
 
   .expert-grid,
@@ -1466,7 +1520,11 @@ address.footer-column a {
     width: 100%;
     height: auto;
     aspect-ratio: 1.71;
-    margin-top: 34px;
+    margin-top: 0;
+  }
+
+  .expert-grid {
+    gap: 16px;
   }
 
   .expert h2,
@@ -1478,12 +1536,17 @@ address.footer-column a {
   }
 
   .competencies {
-    margin-top: 56px;
+    margin-top: 100px;
   }
 
   .competencies li {
     grid-template-columns: 34px 1fr;
     font-size: clamp(21px, 3.6vw, 30px);
+  }
+
+  .competencies li::before,
+  .process-list li::before {
+    margin-top: 0.3em;
   }
 
   .services h2.services-intro {
@@ -1514,6 +1577,7 @@ address.footer-column a {
     z-index: auto;
     flex: 0 0 calc(100% - 42px);
     grid-template-columns: 1fr;
+    align-content: start;
     gap: 24px;
     min-height: 0;
     padding: 22px;
@@ -1524,12 +1588,16 @@ address.footer-column a {
     min-height: 0;
     height: auto;
     aspect-ratio: 1;
-    border-radius: 55px;
+    border-radius: 0px;
   }
 
   .service-content span {
     position: static;
     display: block;
+  }
+
+  .service-content {
+    align-self: start;
   }
 
   .service-content h3 {
@@ -1549,14 +1617,14 @@ address.footer-column a {
 
   .process > div:first-of-type {
     grid-column: 1;
-    grid-row: 2;
+    grid-row: 1;
     width: 100%;
     max-width: 100%;
   }
 
   .process .asset-frame {
     grid-column: 1;
-    grid-row: 2;
+    grid-row: 1;
     align-self: end;
     justify-self: center;
     width: calc(100% + 56px);
@@ -1578,11 +1646,14 @@ address.footer-column a {
     font-size: clamp(19px, 3.4vw, 24px);
   }
 
+  .process p:not(.eyebrow):not(.section-code) br {
+    display: none;
+  }
+
   .benefits {
     display: grid;
-    gap: 36px;
-    row-gap: 30px;
-    padding-bottom: 72px;
+    gap: 0px;
+    padding-bottom: 100px;
   }
 
   .benefits .section-code {
@@ -1612,17 +1683,21 @@ address.footer-column a {
     gap: 34px;
     width: 100%;
     margin: 0;
-    padding: 142px 52px 72px;
+    padding: 0px 52px 132px;
   }
 
   .contact::before {
-    grid-row: 2 / 4;
-    margin: -14px -24px -32px;
+    grid-row: 1 / 3;
+    margin: -24px -24px -32px;
+  }
+
+  .contact > div {
+    grid-row: 1;
   }
 
   .contact > form {
     grid-column: 1;
-    grid-row: 3;
+    grid-row: 2;
     width: 100%;
     min-width: 0;
   }
@@ -1678,15 +1753,33 @@ address.footer-column a {
   }
 }
 
+@media (min-width: 621px) and (max-width: 940px) {
+  html {
+    scroll-padding-top: 125px;
+  }
+
+  .eyebrow {
+    font-size: 24px;
+  }
+
+  .site-header {
+    height: 80px;
+  }
+
+  .site-header::after {
+    height: 81px;
+    background: url("assets/BF_SMALL_logo_tablet.svg") center top / 150% auto no-repeat;
+    transform: translateY(calc(81px - 7.3838vw));
+  }
+
+  .service-card {
+    flex-basis: calc((100% - 42px) * 0.6667);
+  }
+}
+
 @media (max-width: 620px) {
   .site-header {
     padding: 0 16px;
-  }
-
-  .phone,
-  .phone img {
-    width: 20px;
-    height: 20px;
   }
 
   .section {
@@ -1694,8 +1787,8 @@ address.footer-column a {
   }
 
   .hero {
-    gap: 24px;
-    padding: 28px 16px 42px;
+    gap: 40px;
+    padding: 28px 16px 80px;
   }
 
   .hero-copy {
@@ -1705,19 +1798,18 @@ address.footer-column a {
   }
 
   .hero h1 {
-    font-size: clamp(38px, 10.5vw, 52px);
+    font-size: 58px;
   }
 
   .lead {
     margin-bottom: 22px;
-    font-size: clamp(18px, 5.5vw, 25px);
+    font-size: clamp(18px, 6vw, 25px);
     line-height: 1.1;
   }
 
   .hero-points {
     gap: 9px;
-    justify-items: center;
-    font-size: 14px;
+    font-size: 20px;
   }
 
   .hero-actions {
@@ -1729,7 +1821,7 @@ address.footer-column a {
     width: 100%;
     min-height: 42px;
     padding: 10px 14px;
-    font-size: 12px;
+    font-size: 20px;
   }
 
   .hero-visual {
@@ -1737,11 +1829,15 @@ address.footer-column a {
   }
 
   .stats {
-    padding: 0 16px 56px;
-    gap: 10px;
+    padding: 0 16px 80px;
+    grid-template-columns: repeat(2, 167px);
+    justify-content: center;
   }
 
   .stats article {
+    width: 167px;
+    height: 167px;
+    aspect-ratio: auto;
     padding: 12px;
     border-radius: 14px;
   }
@@ -1753,19 +1849,19 @@ address.footer-column a {
 
   .stats span,
   .stats p {
-    font-size: clamp(11px, 3.5vw, 15px);
+    font-size: 16px;
   }
 
   .expert,
   .services,
   .process,
   .benefits {
-    padding: 56px 16px 0;
+    padding: 0px 16px 80px;
   }
 
   .section-code,
   .eyebrow {
-    font-size: 11px;
+    font-size: 16px;
   }
 
   .expert h2,
@@ -1773,7 +1869,7 @@ address.footer-column a {
   .benefits h2,
   .contact h2,
   .services h2.services-intro {
-    font-size: 24px;
+    font-size: 28px;
   }
 
   .expert-content > p:not(.eyebrow),
@@ -1781,11 +1877,11 @@ address.footer-column a {
   .benefits p:not(.eyebrow):not(.section-code),
   .contact p:not(.eyebrow):not(.section-code),
   .service-content p {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .competencies {
-    margin-top: 44px;
+    margin-top: 80px;
   }
 
   .competencies li {
@@ -1852,10 +1948,13 @@ address.footer-column a {
     top: 48px;
   }
 
+  .process-list li:first-child::after {
+    top: 23px;
+  }
+
   .benefits {
-    gap: 26px;
-    row-gap: 30px;
-    padding-bottom: 56px;
+    gap: 0px;
+    padding-bottom: 80px;
   }
 
   .benefit-grid {
@@ -1869,7 +1968,7 @@ address.footer-column a {
 
   .contact {
     gap: 24px;
-    padding: 116px 28px 56px;
+    padding: 0px 28px;
   }
 
   .contact p:not(.eyebrow):not(.section-code) {
@@ -1878,7 +1977,7 @@ address.footer-column a {
   }
 
   .contact::before {
-    margin: -4px -20px -24px;
+    margin: -20px -20px -24px;
     border-radius: 18px;
   }
 
@@ -1923,5 +2022,49 @@ address.footer-column a {
   .footer-column,
   .footer-column h2 {
     font-size: 11px;
+  }
+}
+
+@media (min-width: 621px) and (max-width: 710px) {
+  .contact {
+    gap: 24px;
+    padding: 0 28px;
+  }
+
+  .contact .eyebrow {
+    font-size: 16px;
+  }
+
+  .contact h2 {
+    font-size: 28px;
+  }
+
+  .contact p:not(.eyebrow):not(.section-code) {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .contact::before {
+    margin: -20px -20px -24px;
+    border-radius: 18px;
+  }
+
+  .contact form label {
+    padding: 10px 12px 12px;
+  }
+
+  .contact form label span {
+    font-size: 11px;
+  }
+
+  .contact form input,
+  .contact form textarea,
+  .contact form input::placeholder,
+  .contact form textarea::placeholder {
+    font-size: 14px;
+  }
+
+  .contact .form-note {
+    font-size: 12px;
   }
 }

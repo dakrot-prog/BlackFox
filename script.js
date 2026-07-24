@@ -6,6 +6,7 @@ const phoneInput = document.querySelector('input[name="phone"]');
 const siteHeader = document.querySelector(".site-header");
 const menuToggle = document.querySelector(".menu-toggle");
 const headerNavigation = document.querySelector("#header-navigation");
+const brand = document.querySelector(".brand");
 const pageLoader = document.querySelector("#page-loader");
 
 if (pageLoader) {
@@ -69,6 +70,19 @@ if (siteHeader && menuToggle && headerNavigation) {
   window.addEventListener("resize", () => {
     if (window.innerWidth > 940) {
       closeMenu();
+    }
+  });
+}
+
+if (brand) {
+  brand.addEventListener("click", (event) => {
+    if (window.innerWidth <= 940) {
+      event.preventDefault();
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
     }
   });
 }
