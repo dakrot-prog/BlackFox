@@ -17,10 +17,12 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 90px;
 }
 
 body {
   margin: 0;
+  overflow-x: clip;
   font-family: "Geist", Arial, sans-serif;
   color: var(--text);
   background: var(--bg);
@@ -134,13 +136,13 @@ video {
 }
 
 .site-header {
-  position: relative;
-  z-index: 20;
-  --header-line-offset: 28px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 96px;
+  height: 70px;
   padding: 0 clamp(20px, 5vw, 75px);
   background: rgba(27, 27, 27, 0.86);
   backdrop-filter: blur(16px);
@@ -152,9 +154,11 @@ video {
   z-index: 0;
   left: 0;
   right: 0;
-  top: calc(50% + var(--header-line-offset));
-  height: 1px;
-  background: var(--orange);
+  bottom: 0;
+  width: 100%;
+  height: clamp(28px, 4.55vw, 65px);
+  background: url("assets/FB_line_logo_small.png") left top / 100% 100% no-repeat;
+  transform: translateY(11px);
   pointer-events: none;
 }
 
@@ -162,7 +166,10 @@ video {
   position: relative;
   z-index: 1;
   display: block;
-  background: var(--bg);
+  flex: 0 0 97px;
+  width: 97px;
+  height: 80px;
+  background: transparent;
 }
 
 .menu-toggle {
@@ -190,12 +197,6 @@ video {
   transform: skewX(-24deg);
 }
 
-.brand img {
-  width: 97px;
-  height: 80px;
-  object-fit: contain;
-}
-
 .desktop-nav {
   display: flex;
   gap: 60px;
@@ -208,6 +209,8 @@ video {
 
 .desktop-nav a,
 .phone {
+  position: relative;
+  z-index: 1;
   transition: color 180ms ease;
 }
 
@@ -256,8 +259,8 @@ video {
   grid-template-columns: 1.03fr 1.2fr;
   align-items: center;
   column-gap: clamp(30px, 6vw, 90px);
-  row-gap: 82px;
-  padding: 20px 58px 133px 80px;
+  row-gap: 92px;
+  padding: 60px 80px 150px 80px;
 }
 
 .hero h1 {
@@ -268,6 +271,11 @@ video {
   line-height: 1;
   letter-spacing: 0.05em;
   white-space: nowrap;
+}
+
+.hero h1 .black-word,
+.hero h1 .fox-word {
+  line-height: 1;
 }
 
 .hero h1 .black-word {
@@ -294,11 +302,15 @@ video {
   text-transform: uppercase;
 }
 
+.mobile-break {
+  display: none;
+}
+
 .hero-points {
   display: grid;
   gap: 25px;
   padding: 0;
-  margin: 0 0 0 27px;
+  margin: 0 0 0 24px;
   list-style: none;
   color: var(--text);
   font-size: 20px;
@@ -340,17 +352,78 @@ video {
   font-size: 20px;
   font-weight: 600;
   cursor: pointer;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    background-color 180ms ease,
+    background-position 260ms ease;
 }
 
 .btn.primary {
   color: #111;
   background: linear-gradient(90deg, var(--orange), var(--orange-hot));
+  background-size: 200% 100%;
+}
+
+@media (min-width: 941px) {
+  .hero h1 .black-word,
+  .hero h1 .fox-word {
+    text-box: trim-both cap alphabetic;
+  }
+
+  .contact .btn.primary {
+    width: 300px;
+  }
 }
 
 .btn.ghost {
   color: var(--text);
   background: #282828;
   border-color: #383838;
+}
+
+@media (hover: hover) {
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .btn.primary:hover {
+    background-position: 100% 0;
+    box-shadow: 0 0 14px rgba(254, 165, 2, 0.22);
+  }
+
+  .btn.ghost:hover {
+    color: var(--white);
+    border-color: rgba(255, 255, 255, 0.65);
+    background-color: #303030;
+    box-shadow: 0 0 14px rgba(255, 255, 255, 0.14);
+  }
+}
+
+.btn:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
+
+.btn.ghost:focus-visible {
+  outline-color: var(--white);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+
+  .btn:hover,
+  .btn:active {
+    transform: none;
+  }
 }
 
 .asset-frame {
@@ -385,8 +458,8 @@ video {
 
 .hero-visual {
   position: absolute;
-  right: 58px;
-  top: 25px;
+  right: 40px;
+  top: 70px;
   transform: none;
   width: 681px;
   max-width: 100%;
@@ -416,7 +489,7 @@ video {
 
 .stats {
   width: 100%;
-  padding: 0px 58px 0px 80px;
+  padding: 0px 80px 150px 80px;
   display: grid;
   grid-template-columns: repeat(4, 302px);
   gap: 24px;
@@ -435,6 +508,29 @@ video {
   height: 302px;
   padding: 32px;
   border-radius: 25px;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+@media (hover: hover) {
+  .stats article:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.65);
+    background-color: #303030;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stats article {
+    transition: none;
+  }
+
+  .stats article:hover {
+    transform: none;
+  }
 }
 
 .stats strong {
@@ -482,16 +578,15 @@ video {
 }
 
 .expert {
-  padding: 150px 58px 0px 80px;
+  padding: 0px 80px 150px 80px;
   width:100%;
 }
 
 .section-code {
-  margin: 0 0 35px;
+  margin: 0 0 30px;
   font-family: "Geist Mono", "SFMono-Regular", Consolas, monospace;
   font-size: 16px;
   font-weight: 300;
-  line-height: 1.5;
   letter-spacing: 0.1em;
 }
 
@@ -501,8 +596,12 @@ video {
 .contact {
   display: grid;
   grid-template-columns: 0.95fr 1.2fr;
-  gap: clamp(28px, 5vw, 24px);
+  gap: clamp(24px, 5vw, 28px);
   align-items: center;
+}
+
+.expert-content {
+  align-self: start;
 }
 
 .expert h2,
@@ -511,7 +610,7 @@ video {
 .benefits h2,
 .contact h2 {
   max-width: 760px;
-  margin: 8px 0 16px;
+  margin: 20px 0 10px;
   color: var(--white);
   font-size: clamp(30px, 4vw, 54px);
   line-height: 0.98;
@@ -555,7 +654,7 @@ video {
 .expert-content > p:not(.eyebrow) {
   font-family: "Geist", Arial, sans-serif;
   font-size: 20px;
-  font-weight: 300;
+  font-weight: 200;
   line-height: 1.5;
   letter-spacing: 0.02em;
 }
@@ -571,7 +670,7 @@ video {
 }
 
 .competencies {
-  margin-top: 100px;
+  margin-top: 150px;
 }
 
 .competencies ol,
@@ -622,7 +721,7 @@ video {
 .services {
   width: 100%;
   margin: 0;
-  padding: 150px 58px 0px 80px;
+  padding: 0px 80px 150px 80px;
   overflow: visible;
 }
 
@@ -633,7 +732,7 @@ video {
 .services h2.services-intro {
   width: 900px;
   max-width: 100%;
-  margin: 20px 0 70px;
+  margin: 10px 0 70px;
   color: var(--white);
   font-family: "Geist", Arial, sans-serif;
   font-size: 40px;
@@ -664,7 +763,7 @@ video {
   min-height: 360px;
   padding: 28px;
   border: 1px solid #383838;
-  border-radius: 12px;
+  border-radius: 25px;
   background: var(--bg);
   transform-origin: center top;
   z-index: var(--card-layer, 1);
@@ -698,10 +797,6 @@ video {
  /* background:
     radial-gradient(circle at 50% 72%, rgba(254, 165, 2, 0.28), transparent 26%),
     linear-gradient(145deg, #323232, #111); */
-}
-
-.service-business-art {
-  border-radius: 35px;
 }
 
 .service-art img {
@@ -744,7 +839,6 @@ video {
   font-family: "Geist Mono", "SFMono-Regular", Consolas, monospace;
   font-size: 16px;
   font-weight: 300;
-  line-height: 1.5;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -767,14 +861,14 @@ video {
 .process {
   width: 100%;
   margin: 0;
-  padding: 150px 58px 0px 80px;
+  padding: 0px 80px 150px 80px;
   grid-template-columns: 1fr;
   align-items: start;
 }
 
 .process .section-code {
   grid-column: 1 / -1;
-  margin-bottom: 42px;
+  margin-bottom: 0px;
 }
 
 .process > div:first-of-type {
@@ -789,9 +883,9 @@ video {
   grid-column: 1 / -1;
   grid-row: 2;
   justify-self: end;
-  margin-right: -58px;
-  width: 1019px;
-  max-width: 100%;
+  margin-right: calc(-80px - max(0px, calc((100vw - var(--page-width)) / 2)));
+  width: calc(1019px + max(0px, calc((100vw - var(--page-width)) / 2)));
+  max-width: calc(100% + max(0px, calc((100vw - var(--page-width)) / 2)));
   height: 646px;
   min-height: 510px;
   border: 0;
@@ -850,14 +944,18 @@ video {
 .benefits {
   width: 100%;
   margin: 0;
-  padding: 150px 58px 106px 80px;
+  padding: 0px 80px 150px 80px;
   grid-template-columns: 1fr 1fr;
-  row-gap: 50px;
+  row-gap: 30px;
 }
 
 .benefits .section-code {
   grid-column: 1 / -1;
   margin-bottom: 0;
+}
+
+.benefits > div:not(.benefit-grid) {
+  align-self: start;
 }
 
 .benefit-grid {
@@ -940,15 +1038,19 @@ video {
   width: 100%;
   margin: 0;
   align-items: stretch;
-  padding: 106px 82px 92px 104px;
+  padding: 0px 82px 174px 104px;
   border: 0;
   background: transparent;
 }
 
 .contact::before {
   content: "";
-  position: absolute;
-  inset: 82px 58px 68px 80px;
+  position: relative;
+  grid-column: 1 / -1;
+  grid-row: 2;
+  min-width: 0;
+  min-height: 0;
+  margin: -24px -2px -24px -24px;
   z-index: 0;
   border: 1px solid #373737;
   border-radius: 14px;
@@ -962,10 +1064,20 @@ video {
 }
 
 .contact-code {
-  position: absolute;
-  left: 80px;
-  top: 8px;
-  margin: 0;
+  grid-column: 1 / -1;
+  grid-row: 1;
+  margin-left: -24px;
+  margin-bottom: 30px;
+}
+
+.contact > div {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.contact > form {
+  grid-column: 2;
+  grid-row: 2;
 }
 
 .contact p:not(.eyebrow):not(.section-code) {
@@ -981,6 +1093,8 @@ form {
 form label {
   display: grid;
   gap: 8px;
+  width: 604px;
+  max-width: 100%;
   padding: 14px 18px 16px;
   border: 1px solid #414141;
   border-radius: 12px;
@@ -988,6 +1102,40 @@ form label {
   background: #2c2c2c;
   font-size: 12px;
   font-weight: 700;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+@media (hover: hover) {
+  form label:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.65);
+    background-color: #303030;
+  }
+}
+
+form label:focus-within {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.65);
+  background-color: #303030;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  form label {
+    transition: none;
+  }
+
+  form label:hover,
+  form label:focus-within {
+    transform: none;
+  }
+}
+
+form .btn {
+  width: 604px;
+  max-width: 100%;
 }
 
 form label span {
@@ -1062,7 +1210,6 @@ form textarea {
   gap: clamp(34px, 5vw, 86px);
   justify-content: space-between;
   align-items: start;
-  margin-top: 80px;
   padding: 0 88px 74px;
   background: #222222;
 }
@@ -1098,10 +1245,6 @@ form textarea {
   line-height: 1.15;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-}
-
-.footer-column a {
-  color: inherit;
 }
 
 .footer-brand {
@@ -1144,18 +1287,61 @@ address.footer-column a {
   outline: 1px solid rgba(254, 165, 2, 0.12);
 } */
 
+@media (min-width: 941px) and (max-width: 1439px) {
+  body {
+    width: var(--page-width);
+    zoom: calc(100vw / var(--page-width));
+  }
+
+  .site-header::after {
+    height: 65px;
+  }
+}
+
 @media (max-width: 940px) {
+  .hero-copy {
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero h1,
+  .lead {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .hero-points {
+    width: fit-content;
+    max-width: 100%;
+    justify-items: start;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: left;
+  }
+
+  .mobile-break {
+    display: block;
+  }
+
+  .section-code {
+    display: none;
+  }
+
   .site-header {
-    --header-line-offset: 27px;
-    min-height: 72px;
     padding: 0 28px;
+  }
+
+  .site-header::after {
+    height: min(65px, 16.67vw);
+    background: url("assets/BF_small_logo_mobile.svg") center top / min(390px, 100%) 100% no-repeat;
+    transform: translateY(11px);
   }
 
   .menu-toggle {
     display: grid;
-    gap: 4px;
-    width: 32px;
-    padding: 6px 4px;
+    gap: 6px;
+    width: 48px;
+    padding: 9px 7.5px;
     border: 0;
     color: var(--orange);
     background: transparent;
@@ -1163,8 +1349,8 @@ address.footer-column a {
 
   .menu-toggle span {
     display: block;
-    width: 22px;
-    height: 2px;
+    width: 33px;
+    height: 3px;
     background: currentColor;
   }
 
@@ -1199,7 +1385,7 @@ address.footer-column a {
   }
 
   .site-header.is-menu-open .menu-toggle span:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
+    transform: translateY(9px) rotate(45deg);
   }
 
   .site-header.is-menu-open .menu-toggle span:nth-child(2) {
@@ -1207,7 +1393,7 @@ address.footer-column a {
   }
 
   .site-header.is-menu-open .menu-toggle span:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
+    transform: translateY(-9px) rotate(-45deg);
   }
 
   .phone span {
@@ -1216,8 +1402,8 @@ address.footer-column a {
 
   .phone,
   .phone img {
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
   }
 
   .section {
@@ -1229,7 +1415,7 @@ address.footer-column a {
     display: grid;
     grid-template-columns: 1fr;
     gap: 34px;
-    padding: 42px 28px 64px;
+    padding: 42px 28px 100px;
   }
 
   .hero-copy {
@@ -1256,18 +1442,17 @@ address.footer-column a {
 
   .hero h1 {
     width: 100%;
-    font-size: clamp(54px, 11vw, 84px);
+    font-size: clamp(54px, 14vw, 120px);
   }
 
   .lead {
     width: min(590px, 100%);
-    margin: 8px 0 30px;
+    margin: 8px auto 30px;
     font-size: clamp(22px, 4vw, 34px);
   }
 
   .hero-points {
     gap: 14px;
-    margin-left: 0;
     font-size: 18px;
   }
 
@@ -1280,14 +1465,14 @@ address.footer-column a {
     min-height: 48px;
     height: auto;
     padding: 12px 18px;
-    font-size: 15px;
+    font-size: 18px;
     text-align: center;
   }
 
   .stats {
     width: 100%;
     margin: 0;
-    padding: 0 28px 72px;
+    padding: 0 28px 100px;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 16px;
   }
@@ -1306,6 +1491,11 @@ address.footer-column a {
     width: 100%;
   }
 
+    .stats span,
+  .stats p {
+    font-size: 32px;
+  }
+
   .stats strong {
     margin-bottom: 10px;
   }
@@ -1315,7 +1505,7 @@ address.footer-column a {
   .process,
   .benefits {
     width: 100%;
-    padding: 72px 28px 0;
+    padding: 0px 28px 100px;
   }
 
   .expert-grid,
@@ -1334,7 +1524,11 @@ address.footer-column a {
     width: 100%;
     height: auto;
     aspect-ratio: 1.71;
-    margin-top: 34px;
+    margin-top: 0;
+  }
+
+  .expert-grid {
+    gap: 16px;
   }
 
   .expert h2,
@@ -1346,12 +1540,17 @@ address.footer-column a {
   }
 
   .competencies {
-    margin-top: 56px;
+    margin-top: 100px;
   }
 
   .competencies li {
     grid-template-columns: 34px 1fr;
     font-size: clamp(21px, 3.6vw, 30px);
+  }
+
+  .competencies li::before,
+  .process-list li::before {
+    margin-top: 0.3em;
   }
 
   .services h2.services-intro {
@@ -1382,6 +1581,7 @@ address.footer-column a {
     z-index: auto;
     flex: 0 0 calc(100% - 42px);
     grid-template-columns: 1fr;
+    align-content: start;
     gap: 24px;
     min-height: 0;
     padding: 22px;
@@ -1392,12 +1592,16 @@ address.footer-column a {
     min-height: 0;
     height: auto;
     aspect-ratio: 1;
-    border-radius: 55px;
+    border-radius: 0px;
   }
 
   .service-content span {
     position: static;
     display: block;
+  }
+
+  .service-content {
+    align-self: start;
   }
 
   .service-content h3 {
@@ -1417,14 +1621,14 @@ address.footer-column a {
 
   .process > div:first-of-type {
     grid-column: 1;
-    grid-row: 2;
+    grid-row: 1;
     width: 100%;
     max-width: 100%;
   }
 
   .process .asset-frame {
     grid-column: 1;
-    grid-row: 2;
+    grid-row: 1;
     align-self: end;
     justify-self: center;
     width: calc(100% + 56px);
@@ -1446,10 +1650,14 @@ address.footer-column a {
     font-size: clamp(19px, 3.4vw, 24px);
   }
 
+  .process p:not(.eyebrow):not(.section-code) br {
+    display: none;
+  }
+
   .benefits {
     display: grid;
-    gap: 36px;
-    padding-bottom: 72px;
+    gap: 0px;
+    padding-bottom: 100px;
   }
 
   .benefits .section-code {
@@ -1479,16 +1687,35 @@ address.footer-column a {
     gap: 34px;
     width: 100%;
     margin: 0;
-    padding: 142px 52px 72px;
-  }
-
-  .contact-code {
-    left: 28px;
-    top: 72px;
+    padding: 0px 52px 132px;
   }
 
   .contact::before {
-    inset: 120px 28px 40px;
+    grid-row: 1 / 3;
+    margin: -24px -24px -32px;
+  }
+
+  .contact > div {
+    grid-row: 1;
+  }
+
+  .contact > form {
+    grid-column: 1;
+    grid-row: 2;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .contact form label,
+  .contact form .btn {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .contact form input,
+  .contact form textarea {
+    min-width: 0;
   }
 
   form input,
@@ -1530,17 +1757,33 @@ address.footer-column a {
   }
 }
 
-@media (max-width: 620px) {
-  .site-header {
-    --header-line-offset: 26px;
-    min-height: 60px;
-    padding: 0 16px;
+@media (min-width: 621px) and (max-width: 940px) {
+  html {
+    scroll-padding-top: 125px;
   }
 
-  .phone,
-  .phone img {
-    width: 20px;
-    height: 20px;
+  .eyebrow {
+    font-size: 24px;
+  }
+
+  .site-header {
+    height: 80px;
+  }
+
+  .site-header::after {
+    height: 81px;
+    background: url("assets/BF_SMALL_logo_tablet.svg") center top / 150% auto no-repeat;
+    transform: translateY(calc(81px - 7.3838vw));
+  }
+
+  .service-card {
+    flex-basis: calc((100% - 42px) * 0.6667);
+  }
+}
+
+@media (max-width: 620px) {
+  .site-header {
+    padding: 0 16px;
   }
 
   .section {
@@ -1548,23 +1791,29 @@ address.footer-column a {
   }
 
   .hero {
-    gap: 24px;
-    padding: 28px 16px 42px;
+    gap: 40px;
+    padding: 28px 16px 80px;
+  }
+
+  .hero-copy {
+    width: 100%;
+    justify-self: center;
+    text-align: center;
   }
 
   .hero h1 {
-    font-size: clamp(38px, 10.5vw, 52px);
+    font-size: 58px;
   }
 
   .lead {
     margin-bottom: 22px;
-    font-size: clamp(18px, 5.5vw, 25px);
+    font-size: clamp(18px, 6vw, 25px);
     line-height: 1.1;
   }
 
   .hero-points {
     gap: 9px;
-    font-size: 14px;
+    font-size: 20px;
   }
 
   .hero-actions {
@@ -1576,7 +1825,7 @@ address.footer-column a {
     width: 100%;
     min-height: 42px;
     padding: 10px 14px;
-    font-size: 12px;
+    font-size: 20px;
   }
 
   .hero-visual {
@@ -1584,11 +1833,15 @@ address.footer-column a {
   }
 
   .stats {
-    padding: 0 16px 56px;
-    gap: 10px;
+    padding: 0 16px 80px;
+    grid-template-columns: repeat(2, 167px);
+    justify-content: center;
   }
 
   .stats article {
+    width: 167px;
+    height: 167px;
+    aspect-ratio: auto;
     padding: 12px;
     border-radius: 14px;
   }
@@ -1600,19 +1853,19 @@ address.footer-column a {
 
   .stats span,
   .stats p {
-    font-size: clamp(11px, 3.5vw, 15px);
+    font-size: 16px;
   }
 
   .expert,
   .services,
   .process,
   .benefits {
-    padding: 56px 16px 0;
+    padding: 0px 16px 80px;
   }
 
   .section-code,
   .eyebrow {
-    font-size: 11px;
+    font-size: 16px;
   }
 
   .expert h2,
@@ -1620,7 +1873,7 @@ address.footer-column a {
   .benefits h2,
   .contact h2,
   .services h2.services-intro {
-    font-size: 24px;
+    font-size: 28px;
   }
 
   .expert-content > p:not(.eyebrow),
@@ -1628,11 +1881,11 @@ address.footer-column a {
   .benefits p:not(.eyebrow):not(.section-code),
   .contact p:not(.eyebrow):not(.section-code),
   .service-content p {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .competencies {
-    margin-top: 44px;
+    margin-top: 80px;
   }
 
   .competencies li {
@@ -1699,9 +1952,13 @@ address.footer-column a {
     top: 48px;
   }
 
+  .process-list li:first-child::after {
+    top: 23px;
+  }
+
   .benefits {
-    gap: 26px;
-    padding-bottom: 56px;
+    gap: 0px;
+    padding-bottom: 80px;
   }
 
   .benefit-grid {
@@ -1715,7 +1972,7 @@ address.footer-column a {
 
   .contact {
     gap: 24px;
-    padding: 116px 28px 56px;
+    padding: 0px 28px;
   }
 
   .contact p:not(.eyebrow):not(.section-code) {
@@ -1723,17 +1980,16 @@ address.footer-column a {
     max-width: 100%;
   }
 
-  .contact-code {
-    left: 16px;
-    top: 56px;
-  }
-
   .contact::before {
-    inset: 96px 8px 32px;
+    margin: -20px -20px -24px;
     border-radius: 18px;
   }
 
-  form label {
+  .contact-code {
+    margin-left: -20px;
+  }
+
+  .contact form label {
     padding: 10px 12px 12px;
   }
 
@@ -1770,5 +2026,49 @@ address.footer-column a {
   .footer-column,
   .footer-column h2 {
     font-size: 11px;
+  }
+}
+
+@media (min-width: 621px) and (max-width: 710px) {
+  .contact {
+    gap: 24px;
+    padding: 0 28px;
+  }
+
+  .contact .eyebrow {
+    font-size: 16px;
+  }
+
+  .contact h2 {
+    font-size: 28px;
+  }
+
+  .contact p:not(.eyebrow):not(.section-code) {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .contact::before {
+    margin: -20px -20px -24px;
+    border-radius: 18px;
+  }
+
+  .contact form label {
+    padding: 10px 12px 12px;
+  }
+
+  .contact form label span {
+    font-size: 11px;
+  }
+
+  .contact form input,
+  .contact form textarea,
+  .contact form input::placeholder,
+  .contact form textarea::placeholder {
+    font-size: 14px;
+  }
+
+  .contact .form-note {
+    font-size: 12px;
   }
 }
