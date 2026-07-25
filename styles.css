@@ -157,7 +157,7 @@ video {
   bottom: 0;
   width: 100%;
   height: clamp(28px, 4.55vw, 65px);
-  background: url("assets/FB_line_logo_small.png") left top / 100% 100% no-repeat;
+  background: url("assets/FB_line_logo_small.webp") left top / 100% 100% no-repeat;
   transform: translateY(11px);
   pointer-events: none;
 }
@@ -1437,7 +1437,7 @@ address.footer-column a {
     justify-self: center;
     width: min(620px, 100%);
     height: auto;
-    aspect-ratio: 1.64;
+    /*aspect-ratio: 1.64; */
   }
 
   .hero h1 {

@@ -26,13 +26,13 @@ if (pageLoader) {
     }, 500);
   };
 
-  if (document.readyState === "complete") {
-    window.requestAnimationFrame(hidePageLoader);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", hidePageLoader, { once: true });
   } else {
-    window.addEventListener("load", hidePageLoader, { once: true });
+    window.requestAnimationFrame(hidePageLoader);
   }
 
-  window.setTimeout(hidePageLoader, 10000);
+  window.setTimeout(hidePageLoader, 2000);
 }
 
 if (siteHeader && menuToggle && headerNavigation) {
