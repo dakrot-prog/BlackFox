@@ -29,7 +29,7 @@ phoneLinks.forEach((phoneLink) => {
     };
 
     window.gtag("event", "conversion", {
-      send_to: "AW-988207345/5oqQCOar3NkcEPGxm9cD",
+      send_to: "AW-988207345/MugOClaiz9kcEPGxm9cD",
       event_callback: openPhoneLink,
     });
 
