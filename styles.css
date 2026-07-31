@@ -1437,7 +1437,13 @@ address.footer-column a {
     justify-self: center;
     width: min(620px, 100%);
     height: auto;
+    min-height: 0;
     /*aspect-ratio: 1.64; */
+  }
+
+  .hero-visual video {
+    height: auto;
+    object-fit: contain;
   }
 
   .hero h1 {
