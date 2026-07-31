@@ -29,7 +29,9 @@ phoneLinks.forEach((phoneLink) => {
     };
 
     window.gtag("event", "conversion", {
-      send_to: "AW-988207345/MugOClaiz9kcEPGxm9cD",
+      send_to: "AW-988207345/TBlMCIGp39kcEPGxm9cD",
+      value: 1.0,
+      currency: "UAH",
       event_callback: openPhoneLink,
     });
 
