@@ -1,5 +1,6 @@
 const serviceCards = document.querySelectorAll(".service-card");
 const images = document.querySelectorAll("img");
+const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
 const heroVideo = document.querySelector(".hero-visual video");
 const contactForm = document.querySelector('form[action="https://api.web3forms.com/submit"]');
 const phoneInput = document.querySelector('input[name="phone"]');
@@ -8,6 +9,33 @@ const menuToggle = document.querySelector(".menu-toggle");
 const headerNavigation = document.querySelector("#header-navigation");
 const brand = document.querySelector(".brand");
 const pageLoader = document.querySelector("#page-loader");
+
+phoneLinks.forEach((phoneLink) => {
+  phoneLink.addEventListener("click", (event) => {
+    if (typeof window.gtag !== "function") {
+      return;
+    }
+
+    event.preventDefault();
+
+    let navigationStarted = false;
+    const openPhoneLink = () => {
+      if (navigationStarted) {
+        return;
+      }
+
+      navigationStarted = true;
+      window.location.href = phoneLink.href;
+    };
+
+    window.gtag("event", "conversion", {
+      send_to: "AW-988207345/5oqQCOar3NkcEPGxm9cD",
+      event_callback: openPhoneLink,
+    });
+
+    window.setTimeout(openPhoneLink, 1000);
+  });
+});
 
 if (pageLoader) {
   let loaderHidden = false;
@@ -182,6 +210,14 @@ if (contactForm) {
 
       if (!response.ok || !result.success) {
         throw new Error(result.message || "Web3Forms request failed");
+      }
+
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "conversion", {
+          send_to: "AW-988207345/2t6mCMb1-tEcEPGxm9cD",
+          value: 1.0,
+          currency: "UAH",
+        });
       }
 
       contactForm.reset();
