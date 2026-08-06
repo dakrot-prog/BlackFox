@@ -1269,7 +1269,9 @@ address.footer-column {
   width: max-content;
 }
 
-address.footer-column a {
+address.footer-column a,
+address.footer-column span {
+  color: #ffffff;
   font-family: "Geist", Arial, sans-serif;
   font-size: 20px;
   font-weight: 600;
@@ -2025,7 +2027,8 @@ address.footer-column a {
 
   .footer-brand p,
   .site-footer nav.footer-column a,
-  address.footer-column a {
+  address.footer-column a,
+  address.footer-column span {
     font-size: 12px;
   }
 
