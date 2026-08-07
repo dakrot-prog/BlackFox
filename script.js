@@ -179,7 +179,24 @@ if (contactForm) {
   const formNote = contactForm.querySelector(".form-note");
   const submitButton = contactForm.querySelector('button[type="submit"]');
   const accessKey = contactForm.querySelector('input[name="access_key"]');
+  const requiredFields = Array.from(contactForm.querySelectorAll("[required]"));
   const defaultNote = formNote ? formNote.textContent : "";
+
+  const updateSubmitButtonState = () => {
+    if (!submitButton) {
+      return;
+    }
+
+    const isReady = requiredFields.every(
+      (field) => field.value.trim() !== "" && field.checkValidity()
+    );
+
+    submitButton.classList.toggle("is-ready", isReady);
+  };
+
+  contactForm.addEventListener("input", updateSubmitButtonState);
+  contactForm.addEventListener("change", updateSubmitButtonState);
+  updateSubmitButtonState();
 
   contactForm.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -223,6 +240,7 @@ if (contactForm) {
       }
 
       contactForm.reset();
+      updateSubmitButtonState();
 
       if (formNote) {
         formNote.textContent = "Дякуємо! Заявку відправлено.";
@@ -235,6 +253,8 @@ if (contactForm) {
       if (submitButton) {
         submitButton.disabled = false;
       }
+
+      updateSubmitButtonState();
 
       window.setTimeout(() => {
         if (formNote) {

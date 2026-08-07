@@ -261,11 +261,11 @@ video {
 }
 
 .header-socials a {
-  transition: opacity 180ms ease;
+  transition: transform 180ms ease;
 }
 
 .header-socials a:hover {
-  opacity: 0.72;
+  transform: translateY(-2px);
 }
 
 .header-socials img {
@@ -420,6 +420,13 @@ video {
   border-color: #383838;
 }
 
+.contact form .btn.ghost.is-ready:not(:disabled) {
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.65);
+  background: #303030;
+  box-shadow: 0 0 14px rgba(255, 255, 255, 0.14);
+}
+
 @media (hover: hover) {
   .btn:hover {
     transform: translateY(-2px);
@@ -434,6 +441,13 @@ video {
     color: var(--white);
     border-color: rgba(255, 255, 255, 0.65);
     background-color: #303030;
+    box-shadow: 0 0 14px rgba(255, 255, 255, 0.14);
+  }
+
+  .contact form .btn.ghost.is-ready:not(:disabled):hover {
+    color: var(--white);
+    border-color: rgba(255, 255, 255, 0.65);
+    background: #303030;
     box-shadow: 0 0 14px rgba(255, 255, 255, 0.14);
   }
 }
@@ -1147,11 +1161,11 @@ video {
 }
 
 .contact-socials a {
-  transition: opacity 180ms ease;
+  transition: transform 180ms ease;
 }
 
 .contact-socials a:hover {
-  opacity: 0.72;
+  transform: translateY(-2px);
 }
 
 .contact-socials img {
@@ -1367,11 +1381,11 @@ address.footer-column span {
 }
 
 .footer-socials a {
-  transition: opacity 180ms ease;
+  transition: transform 180ms ease;
 }
 
 .footer-socials a:hover {
-  opacity: 0.72;
+  transform: translateY(-2px);
 }
 
 .footer-socials img {
@@ -1515,6 +1529,14 @@ address.footer-column span {
     display: block;
     width: 28px;
     height: 28px;
+  }
+
+  .mobile-nav-socials a {
+    transition: transform 180ms ease;
+  }
+
+  .mobile-nav-socials a:hover {
+    transform: translateY(-2px);
   }
 
   .mobile-nav-socials img {
