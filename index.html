@@ -2,6 +2,15 @@
 <html lang="uk">
 
 <head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-988207345"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'AW-988207345');
+  </script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BLACKFOX — професійна перевірка на поліграфі в Україні</title>
@@ -23,7 +32,11 @@
   <meta name="twitter:description"
     content="Професійні та конфіденційні дослідження з використанням поліграфа в Україні." />
 
-  <link rel="icon" type="image/png" href="assets/BF_small_logo.png" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon-180.png" />
+  <link rel="manifest" href="/site.webmanifest" />
 
   <script type="application/ld+json">
       {
@@ -32,7 +45,7 @@
         "name": "BLACKFOX",
         "description": "Професійні дослідження з використанням поліграфа для бізнесу, приватних осіб і юридичної сфери.",
         "telephone": "+380970163838",
-        "email": "dakrot@gmail.com",
+        "email": "blackfox.kyiv@gmail.com",
         "areaServed": {
           "@type": "Country",
           "name": "Україна"
@@ -41,7 +54,7 @@
           "@type": "ContactPoint",
           "contactType": "customer service",
           "telephone": "+380970163838",
-          "email": "dakrot@gmail.com",
+          "email": "blackfox.kyiv@gmail.com",
           "availableLanguage": ["uk", "ru"]
         }
       }
@@ -51,12 +64,12 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Geist:wght@200;300;400;500;600;700;800;900&family=Geist+Mono:wght@300;400;600&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=11" />
 </head>
 
 <body class="is-loading">
   <div id="page-loader" class="page-loader" role="status" aria-live="polite" aria-label="Завантаження сторінки">
-    <img src="assets/BF_small_logo.png" alt="" aria-hidden="true" />
+    <img src="assets/footer.webp" width="906" height="555" alt="" aria-hidden="true" />
     <span class="page-loader-bar" aria-hidden="true"></span>
     <span class="page-loader-text">Завантаження...</span>
   </div>
@@ -68,27 +81,46 @@
       <span></span>
       <span></span>
     </button>
-    <a class="brand" href="#top" aria-label="BLACKFOX">
-      <img src="assets/BF_small_logo.png" alt="BLACKFOX" />
-    </a>
+    <a class="brand" href="#top" aria-label="BLACKFOX"></a>
     <nav id="header-navigation" class="desktop-nav" aria-label="Основна навігація">
       <a href="#expert">Експерт</a>
       <a href="#services">Послуги</a>
       <a href="#process">Процес</a>
       <a href="#benefits">Переваги</a>
       <a href="#contacts">Контакти</a>
+      <div class="mobile-nav-contacts">
+        <a class="mobile-nav-phone" href="tel:+380970163838">+38 097 016 38 38</a>
+        <div class="mobile-nav-socials" role="group" aria-label="Месенджери">
+          <a href="viber://chat?number=%2B380970163838" aria-label="Viber">
+            <img src="assets/Viber.svg" width="28" height="28" alt="" aria-hidden="true" />
+          </a>
+          <a href="https://t.me/+380970163838" aria-label="Telegram">
+            <img src="assets/Telegram.svg" width="28" height="28" alt="" aria-hidden="true" />
+          </a>
+        </div>
+      </div>
     </nav>
-    <a class="phone" href="tel:+380970163838">
-      <img src="assets/Phone.svg" alt="" aria-hidden="true" />
-      <span>+38 097 016 38 38</span>
-    </a>
+    <div class="header-contacts">
+      <a class="phone" href="tel:+380970163838">
+        <img class="phone-icon" src="assets/Phone.svg" width="24" height="24" alt="" aria-hidden="true" />
+        <span>+38 097 016 38 38</span>
+      </a>
+      <div class="header-socials" role="group" aria-label="Месенджери">
+        <a href="https://t.me/+380970163838" aria-label="Telegram">
+          <img src="assets/Telegram.svg" width="28" height="28" alt="" aria-hidden="true" />
+        </a>
+        <a href="viber://chat?number=%2B380970163838" aria-label="Viber">
+          <img src="assets/Viber.svg" width="28" height="28" alt="" aria-hidden="true" />
+        </a>
+      </div>
+    </div>
   </header>
 
   <main id="top">
     <section class="hero section">
       <div class="hero-copy">
         <h1><span class="black-word">BLACK</span><span class="fox-word">FOX</span></h1>
-        <p class="lead">Професійна перевірка на поліграфі</p>
+        <p class="lead">Професійна перевірка<br class="mobile-break" /> на поліграфі в Києві</p>
         <ul class="hero-points">
           <li>Конфіденційно</li>
           <li>Об'єктивно</li>
@@ -113,7 +145,7 @@
         <p>професійної роботи з поліграфом</p>
       </article>
       <article>
-        <strong>3 000+</strong>
+        <strong>3000+</strong>
         <span>перевірок</span>
         <p>для бізнесу та приватних клієнтів</p>
       </article>
@@ -133,7 +165,8 @@
       <p class="section-code">[01] Експерт</p>
       <div class="expert-grid">
         <div class="asset-frame expert-laptop-frame">
-          <img src="assets/expert-laptop.png" alt="Результати поліграфного дослідження" />
+          <img src="assets/expert-laptop.webp" width="1884" height="1101"
+            alt="Результати поліграфного дослідження" loading="lazy" decoding="async" />
         </div>
         <div class="expert-content">
           <p class="eyebrow">Експертиза, підтверджена досвідом</p>
@@ -164,7 +197,8 @@
       <h2 class="services-intro">Професійні дослідження з поліграфом</h2>
       <div class="service-stack" aria-label="Послуги BLACKFOX">
         <article class="service-card">
-          <div class="service-art service-business-art"><img src="assets/service-business.png" alt="" /></div>
+          <div class="service-art service-business-art"><img src="assets/service-business.webp" width="1233"
+              height="1233" alt="" loading="lazy" decoding="async" /></div>
           <div class="service-content">
             <span>01/04</span>
             <h3>Для бізнесу</h3>
@@ -179,7 +213,8 @@
         </article>
 
         <article class="service-card">
-          <div class="service-art"><img src="assets/service-private.png" alt="" /></div>
+          <div class="service-art"><img src="assets/service-private.webp" width="1233" height="1233" alt=""
+              loading="lazy" decoding="async" /></div>
           <div class="service-content">
             <span>02/04</span>
             <h3>Для приватних осіб</h3>
@@ -193,7 +228,8 @@
         </article>
 
         <article class="service-card">
-          <div class="service-art"><img src="assets/service-law.png" alt="" /></div>
+          <div class="service-art"><img src="assets/service-law.webp" width="1233" height="1233" alt="" loading="lazy"
+              decoding="async" /></div>
           <div class="service-content">
             <span>03/04</span>
             <h3>Для юридичної сфери</h3>
@@ -207,7 +243,8 @@
         </article>
 
         <article class="service-card">
-          <div class="service-art"><img src="assets/service-consulting.png" alt="" /></div>
+          <div class="service-art"><img src="assets/service-consulting.webp" width="1233" height="1233" alt=""
+              loading="lazy" decoding="async" /></div>
           <div class="service-content">
             <span>04/04</span>
             <h3>Консультація поліграфолога</h3>
@@ -237,7 +274,8 @@
         </ol>
       </div>
       <div class="asset-frame">
-        <img src="assets/process-scan.png" alt="Процес поліграфного дослідження" />
+        <img src="assets/process-scan.webp" width="2847" height="1938" alt="Процес поліграфного дослідження"
+          loading="lazy" decoding="async" />
       </div>
     </section>
 
@@ -245,22 +283,27 @@
       <p class="section-code">[04] Переваги</p>
       <div class="benefit-grid">
         <article class="benefit-placeholder">
-          <img src="assets/confidence.png" alt="Конфіденційність" />
+          <img src="assets/confidence.webp" width="579" height="579" alt="Конфіденційність" loading="lazy"
+            decoding="async" />
         </article>
         <article class="benefit-placeholder">
-          <img src="assets/objection.png" alt="Точність" />
+          <img src="assets/objection.webp" width="579" height="579" alt="Точність" loading="lazy" decoding="async" />
         </article>
         <article class="benefit-placeholder">
-          <img src="assets/skill.png" alt="Досвід експерта" />
+          <img src="assets/skill.webp" width="579" height="579" alt="Досвід експерта" loading="lazy"
+            decoding="async" />
         </article>
         <article class="benefit-placeholder">
-          <img src="assets/methods.png" alt="Сучасні методики" />
+          <img src="assets/methods.webp" width="579" height="579" alt="Сучасні методики" loading="lazy"
+            decoding="async" />
         </article>
         <article class="benefit-placeholder">
-          <img src="assets/individual.png" alt="Індивідуальний підхід" />
+          <img src="assets/individual.webp" width="579" height="579" alt="Індивідуальний підхід" loading="lazy"
+            decoding="async" />
         </article>
         <article class="benefit-placeholder">
-          <img src="assets/prof_et.png" alt="Професійна етика" />
+          <img src="assets/prof_et.webp" width="579" height="579" alt="Професійна етика" loading="lazy"
+            decoding="async" />
         </article>
       </div>
       <div>
@@ -281,10 +324,20 @@
         <p>Готові відповісти на ваші запитання, допомогти оцінити ситуацію та підібрати оптимальний формат дослідження з
           використанням поліграфа. Кожне звернення розглядається індивідуально та з повним дотриманням конфіденційності.
         </p>
-        <a class="btn primary" href="tel:+380970163838">+38 097 016 38 38</a>
+        <div class="contact-actions">
+          <a class="btn primary" href="tel:+380970163838">+38 097 016 38 38</a>
+          <div class="contact-socials" role="group" aria-label="Месенджери">
+            <a href="viber://chat?number=%2B380970163838" aria-label="Viber">
+              <img src="assets/Viber.svg" width="36" height="36" alt="" aria-hidden="true" />
+            </a>
+            <a href="https://t.me/+380970163838" aria-label="Telegram">
+              <img src="assets/Telegram.svg" width="36" height="36" alt="" aria-hidden="true" />
+            </a>
+          </div>
+        </div>
       </div>
       <form action="https://api.web3forms.com/submit" method="POST">
-        <input type="hidden" name="access_key" value="a4ce2f4f-9501-432b-9d9a-da9ebd7a4307" />
+        <input type="hidden" name="access_key" value="d6ca41e8-ead1-490b-bd4f-74d2e8ce8701" />
         <input type="hidden" name="subject" value="Нова заявка з сайту BLACKFOX" />
         <input type="hidden" name="from_name" value="BLACKFOX" />
         <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" hidden />
@@ -292,7 +345,7 @@
         <label><span>Телефон*</span><input type="tel" name="phone" placeholder="+38 (0XX) XXX XX XX" autocomplete="tel"
             maxlength="19" pattern="^\+38 \(\d{3}\) \d{3} \d{2} \d{2}$"
             title="Введіть номер у форматі +38 (0XX) XXX XX XX" required /></label>
-        <label><span>Email</span><input type="email" name="email" placeholder="dakrot@gmail.com" /></label>
+        <label><span>Email</span><input type="email" name="email" placeholder="Введіть ваш email" /></label>
         <label><span>Тема</span><textarea name="message" rows="3"
             placeholder="Короткий опис ситуації"></textarea></label>
         <p class="form-note">Ми гарантуємо конфіденційність кожного звернення.</p>
@@ -303,7 +356,8 @@
 
   <footer class="site-footer">
     <div class="footer-brand">
-      <img class="footer-logo" src="assets/footer.png" alt="BLACKFOX" />
+      <img class="footer-logo" src="assets/footer.webp" width="906" height="555" alt="BLACKFOX" loading="lazy"
+        decoding="async" />
       <p>ПРОФЕСІЙНА ПЕРЕВІРКА НА ПОЛІГРАФІ</p>
     </div>
     <nav class="footer-column" aria-label="Навігація у футері">
@@ -324,11 +378,21 @@
     <address class="footer-column">
       <h2>Контакти</h2>
       <a href="tel:+380970163838">+38 (097) 016 38 38</a>
-      <a href="mailto:dakrot@gmail.com">dakrot@gmail.com</a>
+      <a href="mailto:blackfox.kyiv@gmail.com">blackfox.kyiv@gmail.com</a>
+      <span>м. Київ</span>
+      <span>ст. м. Олімпійська</span>
+      <div class="footer-socials" role="group" aria-label="Месенджери">
+        <a href="viber://chat?number=%2B380970163838" aria-label="Viber">
+          <img src="assets/Viber.svg" width="28" height="28" alt="" aria-hidden="true" />
+        </a>
+        <a href="https://t.me/+380970163838" aria-label="Telegram">
+          <img src="assets/Telegram.svg" width="28" height="28" alt="" aria-hidden="true" />
+        </a>
+      </div>
     </address>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=9"></script>
 </body>
 
 </html>

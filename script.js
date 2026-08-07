@@ -1,12 +1,43 @@
 const serviceCards = document.querySelectorAll(".service-card");
 const images = document.querySelectorAll("img");
+const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
 const heroVideo = document.querySelector(".hero-visual video");
 const contactForm = document.querySelector('form[action="https://api.web3forms.com/submit"]');
 const phoneInput = document.querySelector('input[name="phone"]');
 const siteHeader = document.querySelector(".site-header");
 const menuToggle = document.querySelector(".menu-toggle");
 const headerNavigation = document.querySelector("#header-navigation");
+const brand = document.querySelector(".brand");
 const pageLoader = document.querySelector("#page-loader");
+
+phoneLinks.forEach((phoneLink) => {
+  phoneLink.addEventListener("click", (event) => {
+    if (typeof window.gtag !== "function") {
+      return;
+    }
+
+    event.preventDefault();
+
+    let navigationStarted = false;
+    const openPhoneLink = () => {
+      if (navigationStarted) {
+        return;
+      }
+
+      navigationStarted = true;
+      window.location.href = phoneLink.href;
+    };
+
+    window.gtag("event", "conversion", {
+      send_to: "AW-988207345/TBlMCIGp39kcEPGxm9cD",
+      value: 1.0,
+      currency: "UAH",
+      event_callback: openPhoneLink,
+    });
+
+    window.setTimeout(openPhoneLink, 1000);
+  });
+});
 
 if (pageLoader) {
   let loaderHidden = false;
@@ -25,13 +56,13 @@ if (pageLoader) {
     }, 500);
   };
 
-  if (document.readyState === "complete") {
-    window.requestAnimationFrame(hidePageLoader);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", hidePageLoader, { once: true });
   } else {
-    window.addEventListener("load", hidePageLoader, { once: true });
+    window.requestAnimationFrame(hidePageLoader);
   }
 
-  window.setTimeout(hidePageLoader, 10000);
+  window.setTimeout(hidePageLoader, 2000);
 }
 
 if (siteHeader && menuToggle && headerNavigation) {
@@ -69,6 +100,19 @@ if (siteHeader && menuToggle && headerNavigation) {
   window.addEventListener("resize", () => {
     if (window.innerWidth > 940) {
       closeMenu();
+    }
+  });
+}
+
+if (brand) {
+  brand.addEventListener("click", (event) => {
+    if (window.innerWidth <= 940) {
+      event.preventDefault();
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
     }
   });
 }
@@ -135,7 +179,24 @@ if (contactForm) {
   const formNote = contactForm.querySelector(".form-note");
   const submitButton = contactForm.querySelector('button[type="submit"]');
   const accessKey = contactForm.querySelector('input[name="access_key"]');
+  const requiredFields = Array.from(contactForm.querySelectorAll("[required]"));
   const defaultNote = formNote ? formNote.textContent : "";
+
+  const updateSubmitButtonState = () => {
+    if (!submitButton) {
+      return;
+    }
+
+    const isReady = requiredFields.every(
+      (field) => field.value.trim() !== "" && field.checkValidity()
+    );
+
+    submitButton.classList.toggle("is-ready", isReady);
+  };
+
+  contactForm.addEventListener("input", updateSubmitButtonState);
+  contactForm.addEventListener("change", updateSubmitButtonState);
+  updateSubmitButtonState();
 
   contactForm.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -170,7 +231,16 @@ if (contactForm) {
         throw new Error(result.message || "Web3Forms request failed");
       }
 
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "conversion", {
+          send_to: "AW-988207345/2t6mCMb1-tEcEPGxm9cD",
+          value: 1.0,
+          currency: "UAH",
+        });
+      }
+
       contactForm.reset();
+      updateSubmitButtonState();
 
       if (formNote) {
         formNote.textContent = "Дякуємо! Заявку відправлено.";
@@ -183,6 +253,8 @@ if (contactForm) {
       if (submitButton) {
         submitButton.disabled = false;
       }
+
+      updateSubmitButtonState();
 
       window.setTimeout(() => {
         if (formNote) {
